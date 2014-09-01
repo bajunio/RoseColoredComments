@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Rose Colored Comments",
-  "description": "This extension Filters Negative Youtube Comments.",
+  "description": "This extension allows you to display YouTube comments.",
   "version": "1.0",
 
   "permissions": [

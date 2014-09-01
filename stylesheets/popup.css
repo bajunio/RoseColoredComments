@@ -1,0 +1,36 @@
+body {
+
+  min-width: 400px;
+  min-height: 400px;
+  max-height: 400px;
+  overflow-x: hidden;
+  background-image: url('backgroundtexture.jpg');
+  background-repeat: repeat;
+}
+
+a {
+
+  font-size: 120%;
+}
+
+#title {
+
+  text-align: center;
+  font-size: 200%;
+  color:blue;
+  font-style: italic;
+  border-bottom: 20px;
+}
+
+.comment {
+
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 0px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+  background-color: #FFC266;
+  min-height: 40px;
+  max-width: 395px;
+}
