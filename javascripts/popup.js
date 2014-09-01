@@ -29,7 +29,7 @@ var commentGenerator = {
       dataType:"json",
       url: url,
       success: function(responseObject) {
-        commentParser.init(responseObject)     
+        commentParser.init(responseObject)
       }
     })
   }
@@ -69,7 +69,7 @@ var commentAppender = {
  var wordFilter = {
   filterBadComments: function(parsedArray) {
     var filteredArray = parsedArray
-    var badWordList = ["bad","pony","terrible","waste"]
+    var badWordList = []
     for (var i = 0;i<filteredArray.length;i++) {
       var string = filteredArray[i].commentContent
       for (var y = 0;y<badWordList.length;y++){
