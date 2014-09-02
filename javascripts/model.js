@@ -1,5 +1,12 @@
 RoseColoredComments.Model = function() {}
 
+var restrictedWordsArray = [
+'boo',
+'bad',
+'fail',
+'pony'
+]
+
 RoseColoredComments.Model.prototype = {
 
   fetchComments: function(url) {
@@ -17,12 +24,12 @@ RoseColoredComments.Model.prototype = {
   },
 
   filterComments: function(data) {
-    var commentArray = data.feed.entry
-    for (var i = 0; i < commentArray.length; i++) {
-      if( (new RegExp( '\\b' + array.join('\\b|\\b') + '\\b') ).test(comment) ) {
-        this.goodComment(comment)
+    var rawCommentArray = data.feed.entry
+    for (var i = 0; i < rawCommentArray.length; i++) {
+      if( (new RegExp( '\\b' + restrictedWordsArray.join('\\b|\\b') + '\\b') ).test(rawCommentArray[i]) ) {
+        this.goodComment(rawCommentArray[i])
       } else {
-        this.badComment(comment)
+        this.badComment(rawCommentArray[i])
       }
     }
   },

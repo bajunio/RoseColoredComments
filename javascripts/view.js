@@ -2,11 +2,16 @@ RoseColoredComments.View = function() {}
 
 RoseColoredComments.View.prototype = {
 
-  getUrl: function() {
-    chrome.tabs.query({currentWindow: true, active: true},function(tabs){
-      var url = tabs[0].url
-      var apiUrl = urlFetcher.prepareUrl(url)
-      commentGenerator.getComments(apiUrl)
+  fetchVideoId: function() {
+    chrome.tabs.query({
+      currentWindow: true, active: true},
+      function(tabs) {
+        var videoId = tabs[0].url.pop(11)
+        return videoId
     })
   }
+
+
+
+
 }
