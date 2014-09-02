@@ -14,5 +14,15 @@
     "default_popup": "html/popup.html"
   },
 
-  "content_security_policy": "script-src 'self' https://apis.google.com https://gdata.youtube.com; object-src 'self'"
+  "content_security_policy": "script-src 'self' https://apis.google.com https://gdata.youtube.com; object-src 'self'",
+
+  "content_scripts": [
+    {
+      "matches": [ "https://www.youtube.com/*" ],
+
+      "css": [ "stylesheets/popup.css" ],
+
+      "js": [ "javascripts/jquery-2.1.1.min.js", "javascripts/namespace.js", "javascripts/rosecoloredcomments.js", "javascripts/model.js", "javascripts/view.js", "javascripts/controller.js" ]
+    }
+  ]
 }
