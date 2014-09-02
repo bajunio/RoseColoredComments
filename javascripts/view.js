@@ -11,9 +11,20 @@ RoseColoredComments.View.prototype = {
     })
   },
 
-  appendComments: function(filteredAuthorAndCommentsArray)
+  buildComment: function(filteredAuthorAndCommentArray) {
+    var authorName
+    var commentText
+    var commentDiv
+    for (var i = 0; i < filteredAuthorAndCommentArray.length; i++) {
+      commentText = filteredAuthorAndCommentArray[i][1]
+      authorName = filteredAuthorAndCommentArray[i][0]
+      commentDiv = "<div class='comment'>" + commentText + "</br>" + "-" + authorName + "</div>"
+      this.appendComment(commentDiv)
 
+    }
+  },
 
-
-
+  appendComment: function(commentDiv) {
+    $('#commentBox').append(commentDiv)
+  }
 }
