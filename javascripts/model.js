@@ -15,7 +15,7 @@ RoseColoredComments.Model.prototype = {
       dataType:"json",
       url: url,
       success: function(data) {
-        this.filterComments(data)
+        this.sortData(data)
       },
       error: function() {
         alert("Sorry, Joyce...")
@@ -23,18 +23,30 @@ RoseColoredComments.Model.prototype = {
     })
   },
 
-  filterComments: function(data) {
-    var rawCommentArray = data.feed.entry
-    for (var i = 0; i < rawCommentArray.length; i++) {
-      if( (new RegExp( '\\b' + restrictedWordsArray.join('\\b|\\b') + '\\b') ).test(rawCommentArray[i]) ) {
-        this.goodComment(rawCommentArray[i])
-      } else {
-        this.badComment(rawCommentArray[i])
-      }
+  sortData: function(data) {
+    var rawDataArray = data.feed.entry
+    var authorAndCommentArray = []
+    var author
+    var comment
+    for (var i = 0; i < rawDataArray.length; i++) {
+      author = rawDataArray[i].author[0].name.$t
+      comment =rawDataArray[i].content.$t
+      authorAndCommentArray.push([author, comment])
     }
+    this.filterData(authorAndCommentArray)
   },
 
-  goodComment: function(comment) {},
-  badComment: function(comment) {}
-
+  filterData: function(authorAndCommentArray) {
+    var filteredAuthorAndCommentArray = authorAndCommentArray
+    for (var i = 0; i < filteredAuthorAndCommentArray.length; i++) {
+      if( (new RegExp( '\\b' + restrictedWordsArray.join('\\b|\\b') + '\\b') ).test(filteredAuthorAndCommentArray[i][1]) ) {
+        filteredAuthorAndCommentArray.splice(i, 1)
+      }
+    }
+  }
 }
+
+
+
+
+for (var i = 0; i < rawCommentArray.length; i++) {
