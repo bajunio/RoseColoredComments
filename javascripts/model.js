@@ -30,7 +30,7 @@ RoseColoredComments.Model.prototype = {
     var comment
     for (var i = 0; i < rawDataArray.length; i++) {
       author = rawDataArray[i].author[0].name.$t
-      comment =rawDataArray[i].content.$t
+      comment = rawDataArray[i].content.$t
       authorAndCommentArray.push([author, comment])
     }
     this.filterData(authorAndCommentArray)
@@ -38,15 +38,17 @@ RoseColoredComments.Model.prototype = {
 
   filterData: function(authorAndCommentArray) {
     var filteredAuthorAndCommentArray = authorAndCommentArray
+    var comment
     for (var i = 0; i < filteredAuthorAndCommentArray.length; i++) {
-      if( (new RegExp( '\\b' + restrictedWordsArray.join('\\b|\\b') + '\\b') ).test(filteredAuthorAndCommentArray[i][1]) ) {
+      comment = filteredAuthorAndCommentArray[i][1]
+      if( this.checkForRestrictedWords(comment) ) {
         filteredAuthorAndCommentArray.splice(i, 1)
       }
     }
+   return filteredAuthorAndCommentArray
+  },
+
+  checkForRestrictedWords: function(restrictedWordsArray, comment) {
+    return new RegExp( '\\b' + restrictedWordsArray.join('\\b|\\b') + '\\b').test(comment)
   }
 }
-
-
-
-
-for (var i = 0; i < rawCommentArray.length; i++) {

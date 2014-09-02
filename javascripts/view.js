@@ -9,7 +9,9 @@ RoseColoredComments.View.prototype = {
         var videoId = tabs[0].url.pop(11)
         return videoId
     })
-  }
+  },
+
+  appendComments: function(filteredAuthorAndCommentsArray)
 
 
 
